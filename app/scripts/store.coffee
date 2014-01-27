@@ -1,0 +1,1 @@
+Foosure.ApplicationAdapter = DS.FixtureAdapter
