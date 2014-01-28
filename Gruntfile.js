@@ -27,6 +27,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
+            emblem: {
+                files: '<%= yeoman.app %>/templates/**/*.emblem',
+                tasks: ['emblem']
+            },
             emberTemplates: {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
                 tasks: ['emberTemplates']
@@ -307,16 +311,19 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'emberTemplates',
+                'emblem',
                 'coffee:dist',
                 'compass:server'
             ],
             test: [
                 'emberTemplates',
+                'emblem',
                 'coffee',
                 'compass'
             ],
             dist: [
                 'emberTemplates',
+                'emblem',
                 'coffee',
                 'compass:dist',
                 'imagemin',
@@ -339,6 +346,22 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
+                }
+            }
+        },
+        emblem: {
+            options: {
+              root: yeomanConfig.app + '/templates/',
+              dependencies: {
+                jquery: 'app/bower_components/jquery/jquery.js',
+                ember: 'app/bower_components/ember/ember.js',
+                emblem: 'app/bower_components/emblem.js/emblem.js',
+                handlebars: 'app/bower_components/handlebars/handlebars.js'
+              }
+            },
+            dist: {
+                files: {
+                    '.tmp/scripts/compiled-emblem-templates.js': '<%= yeoman.app %>/templates/{,*/}*.emblem'
                 }
             }
         },
