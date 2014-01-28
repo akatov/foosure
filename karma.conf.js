@@ -27,7 +27,6 @@ module.exports = function(config) {
 
       '.tmp/scripts/combined-scripts.js',
       '.tmp/scripts/compiled-templates.js',
-      '.tmp/scripts/compiled-emblem-templates.js',
       '.tmp/styles/style.css',
       'test/support/*.coffee',
       'test/spec/*.coffee',

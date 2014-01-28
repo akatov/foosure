@@ -31,10 +31,6 @@ module.exports = function (grunt) {
                 files: '<%= yeoman.app %>/templates/**/*.emblem',
                 tasks: ['emblem']
             },
-            emberTemplates: {
-                files: '<%= yeoman.app %>/templates/**/*.hbs',
-                tasks: ['emberTemplates']
-            },
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
                 tasks: ['coffee:dist']
@@ -310,19 +306,16 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'emberTemplates',
                 'emblem',
                 'coffee:dist',
                 'compass:server'
             ],
             test: [
-                'emberTemplates',
                 'emblem',
                 'coffee',
                 'compass'
             ],
             dist: [
-                'emberTemplates',
                 'emblem',
                 'coffee',
                 'compass:dist',
@@ -334,19 +327,6 @@ module.exports = function (grunt) {
         karma: {
             unit: {
                 configFile: 'karma.conf.js'
-            }
-        },
-        emberTemplates: {
-            options: {
-                templateName: function (sourceFile) {
-                    var templatePath = yeomanConfig.app + '/templates/';
-                    return sourceFile.replace(templatePath, '');
-                }
-            },
-            dist: {
-                files: {
-                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.hbs'
-                }
             }
         },
         emblem: {
@@ -361,7 +341,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '.tmp/scripts/compiled-emblem-templates.js': '<%= yeoman.app %>/templates/{,*/}*.emblem'
+                    '.tmp/scripts/compiled-templates.js': '<%= yeoman.app %>/templates/{,*/}*.emblem'
                 }
             }
         },
