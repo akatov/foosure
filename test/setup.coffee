@@ -4,10 +4,10 @@ should = chai.should()
 
 chai.Assertion.includeStack = true
 
-document.write('<div id="ember-testing-container"><div id="ember-testing"></div></div>');
+document.write '<div id="foosure-app"></div>'
 
 Ember.testing = true
-Foosure.rootElement = "#ember-testing"
+Foosure.rootElement = "#foosure-app"
 Ember.Test.adapter = Ember.Test.MochaAdapter.create()
 
 Foosure.setupForTesting()
